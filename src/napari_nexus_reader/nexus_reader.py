@@ -28,6 +28,7 @@ def napari_get_reader(path):
         If the path is a recognized format, return a function that accepts the
         same path or list of paths, and returns a list of layer data tuples.
     """
+    print("HELLO")
     if isinstance(path, list):
         # reader plugins may be handed single path, or a list of paths.
         # if it is a list, it is assumed to be an image stack...
@@ -65,6 +66,7 @@ def reader_function(path):
         Both "meta", and "layer_type" are optional. napari will default to
         layer_type=="image" if not provided
     """
+    print("WORLD")
     # handle both a string and a list of strings
     paths = [path] if isinstance(path, str) else path
 
@@ -84,7 +86,7 @@ def reader_function(path):
        
         # Try to get the data
         try:
-            data = handle["entry"]["data"].data
+            data = handle["entry"]["data"]["data"]
         except Exception:
             continue
 
